@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  day: 2018-12-09
+  time: 2018-12-09 04:57:18
+  car_maker: MyString
+  car_model: MyString
+  user_id: 1
+  size_id: 1
+
+two:
+  day: 2018-12-09
+  time: 2018-12-09 04:57:18
+  car_maker: MyString
+  car_model: MyString
+  user_id: 1
+  size_id: 1
