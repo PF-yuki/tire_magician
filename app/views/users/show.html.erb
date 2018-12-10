@@ -1,2 +1,14 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<h1>マイページ</h1>
+
+<h4>名前:
+  <%= current_user.lastname %>
+  <%= current_user.firstname %>
+</h4>
+<h4>電話番号:
+<%= current_user.telephone %>
+</h4>
+<h4>Eメールアドレス:
+<%= current_user.email %>
+</h4>
+
+<h1><%= link_to "編集", edit_user_path(current_user.id) %>
