@@ -1,12 +1,28 @@
 <h1>ユーザー情報編集</h1>
 
+
 <%= form_for (@user) do |t| %>
 <p>氏名</p>
-<%= t.text_field :lastname, autofocus: true, placeholder:"性" %>
-<%= t.text_field :firstname, autofocus: true, placeholder:"名" %>
+  <div class="field">
+    <%= t.label :lastname, "性" %><br />
+    <%= t.text_field :lastname, autofocus: true, autocomplete: "lastname" %>
+  </div>
 
-<%= t.text_field :telephone, autofocus: true, placeholder:"電話番号" %>
-<%= t.text_field :email, autofocus: true, placeholder:"Eメールアドレス" %>
+  <div class="field">
+    <%= t.label :firstname, "名" %><br />
+    <%= t.text_field :firstname, autofocus: true, autocomplete: "firstname" %>
+  </div>
+
+  <div class="field">
+    <%= t.label :email, "Eメールアドレス" %><br />
+    <%= t.email_field :email, autofocus: true, autocomplete: "email" %>
+  </div>
+
+    <div class="field">
+    <%= t.label :telephone, "電話番号" %><br />
+    <%= t.text_field :telephone, autofocus: true, autocomplete: "telephone" %>
+  </div>
+
 
 <%= t.submit "変更を保存" %>
 <% end %>

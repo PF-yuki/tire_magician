@@ -4,27 +4,27 @@
   <%= devise_error_messages! %>
 
   <div class="field">
-    <%= f.label '性' %><br />
-    <%= f.text_field :lastname, autofocus: true %>
+    <%= f.label :lastname, "性" %><br />
+    <%= f.text_field :lastname, autofocus: true, autocomplete: "lastname" %>
   </div>
 
   <div class="field">
-    <%= f.label '名' %><br />
-    <%= f.text_field :firstname, autofocus: true %>
+    <%= f.label :firstname, "名" %><br />
+    <%= f.text_field :firstname, autofocus: true, autocomplete: "firstname" %>
   </div>
 
   <div class="field">
-    <%= f.label 'Eメールアドレス' %><br />
+    <%= f.label :email, "Eメールアドレス" %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
 
     <div class="field">
-    <%= f.label '電話番号' %><br />
-    <%= f.text_field :telephone, autofocus: true %>
+    <%= f.label :telephone, "電話番号" %><br />
+    <%= f.text_field :telephone, autofocus: true, autocomplete: "telephone" %>
   </div>
 
   <div class="field">
-    <%= f.label 'パスワード' %>
+    <%= f.label :password, "パスワード" %>
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %>文字以上半角英数字)</em>
     <% end %><br />
@@ -32,7 +32,7 @@
   </div>
 
   <div class="field">
-    <%= f.label '確認の為もう一度入力して下さい' %><br />
+    <%= f.label :password_confirmation, "確認の為もう一度入力して下さい" %><br />
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
 
@@ -41,4 +41,4 @@
   </div>
 <% end %>
 
-<%= render "devise/shared/links" %>
+

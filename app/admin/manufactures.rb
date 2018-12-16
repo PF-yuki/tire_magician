@@ -1,10 +1,10 @@
 ActiveAdmin.register Manufacture do
-  permit_params :id, :name, :tire_maker, :image
+  permit_params :id, :name, :tire_maker_id, :image
 
   form do |t|
   t.inputs do
     t.input :name
-    t.input :tire_maker, as: :select, collection: ['ブリジストン', 'ダンロップ', 'YOKOHAMA']
+    t.input :tire_maker_id, as: :select, collection: {'ブリジストン' => 1, 'ダンロップ' => 2, 'YOKOHAMA' => 3}
     t.input :image, :as => :file
   end
   t.actions
