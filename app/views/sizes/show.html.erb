@@ -5,17 +5,31 @@
 
 <div class="container">
 
-<% @manufactures.each do |size| %>
-  <div class="row">
-    <div class="col-xs-4">
 
+  <!-- ブリジストン -->
+  <% @sizes.each do |size| %>
+  <% if size.manufacture.tire_maker_id == '1' %>
+    <div class="row">
+      <div class="col-xs-4">
+        <%= attachment_image_tag size.manufacture, :image, :size => "350x250" %>
+      </div>
+      <div class="col-xs-8">
+        <%= size.manufacture.name %>
+        <%= size.name %>
+        <%= size.price %>
+    <% if user_signed_in? %>
+        <%= link_to 'この商品を予約する', reserves_path(size),method: :get, class: 'btn btn-danger' %>
+    <% else %>
+        <%= link_to '会員登録して商品を予約する', new_user_registration_path, class: 'btn btn-danger' %>
+    <% end %>
+      </div>
     </div>
-    <div class="col-xs-8">
-      <%= size.manufacture.name %>
-      <%= size.name %>
-      <%= size.price %>
-    </div>
-  </div>
-<% end %>
+  <% else %>
+  <% end %>
+  <% end %>
+
+
+
 
 </div>
+

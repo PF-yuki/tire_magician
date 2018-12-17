@@ -4,7 +4,7 @@ class SizesController < ApplicationController
 
   def show
   	@size = Size.find(params[:id])
-  	@manufactures = Size.where(name: @size.name)
+  	@sizes = Size.where(name: @size.name).order(price: :asc)
   end
 
   def select
