@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_10_082953) do
+ActiveRecord::Schema.define(version: 2018_12_16_052218) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -45,13 +45,10 @@ ActiveRecord::Schema.define(version: 2018_12_10_082953) do
 
   create_table "manufactures", force: :cascade do |t|
     t.string "name"
-    t.string "tire_maker"
+    t.string "tire_maker_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "photo_file_name"
-    t.string "photo_content_type"
-    t.bigint "photo_file_size"
-    t.datetime "photo_updated_at"
+    t.text "image_id"
   end
 
   create_table "reserves", force: :cascade do |t|

@@ -1,0 +1,13 @@
+
+
+<div class="dropdown">
+    <button class="btn btn-info dropdown-toggle" type="button" data-toggle="dropdown">サイズを選択してください
+    <span class="caret"></span></button>
+    <ul class="dropdown-menu">
+      <% @sizes.each do |size| %>
+      <li><%= link_to size.name, size_path(size.id) %></li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+

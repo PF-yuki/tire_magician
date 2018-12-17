@@ -1,2 +1,21 @@
-<h1>Sizes#show</h1>
-<p>Find me in app/views/sizes/show.html.erb</p>
+
+
+
+
+
+<div class="container">
+
+<% @manufactures.each do |size| %>
+  <div class="row">
+    <div class="col-xs-4">
+
+    </div>
+    <div class="col-xs-8">
+      <%= size.manufacture.name %>
+      <%= size.name %>
+      <%= size.price %>
+    </div>
+  </div>
+<% end %>
+
+</div>

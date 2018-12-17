@@ -1,5 +1,5 @@
 ActiveAdmin.register Reserve do
-  permit_params :day, :time, :car_maker, :car_model, :user_id, :size_id
+  permit_params :day, :time, :car_maker, :car_model, :user_id, :size_id, :manufacture_id
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #
