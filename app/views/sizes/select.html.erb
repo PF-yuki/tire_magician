@@ -1,13 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+  <!-- header -->
+  <%= render 'sizes/header' %>
+
+  <main>
+    <div class="container">
+
+      <div class="select">
+      <h4>商品を選択</h4>
+        <div class="dropdown">
+          <button class="btn btn-info dropdown-toggle" type="button" data-toggle="dropdown">サイズを選択してください
+          <span class="caret"></span></button>
+          <ul class="dropdown-menu">
 
 
-<div class="dropdown">
-    <button class="btn btn-info dropdown-toggle" type="button" data-toggle="dropdown">サイズを選択してください
-    <span class="caret"></span></button>
-    <ul class="dropdown-menu">
-      <% @sizes.each do |size| %>
-      <li><%= link_to size.name, size_path(size.id) %></li>
-      <% end %>
-    </ul>
-  </div>
-</div>
+            <% @sizes.each do |size| %>
 
+                  <li><%= link_to size ,size_path(size) %></li>
+            <% end %>
+
+
+
+
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- footer -->
+  <%= render 'sizes/footer' %>
+
+</body>
+</html>

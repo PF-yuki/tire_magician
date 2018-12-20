@@ -1,35 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+</head>
+<body>
 
+  <!-- header -->
+  <%= render 'sizes/header' %>
 
-
-
-
-<div class="container">
-
+  <main>
+  <div class="container">
 
   <!-- ブリジストン -->
   <% @sizes.each do |size| %>
   <% if size.manufacture.tire_maker_id == '1' %>
     <div class="row">
-      <div class="col-xs-4">
+      <div class="col-md-5">
         <%= attachment_image_tag size.manufacture, :image, :size => "350x250" %>
       </div>
-      <div class="col-xs-8">
+      <div class="col-md-7">
+        <h4>BRIDGESTONE</h4>
         <%= size.manufacture.name %>
         <%= size.name %>
-        <%= size.price %>
+        <%= size.price %><br>
     <% if user_signed_in? %>
-        <%= link_to 'この商品を予約する', reserves_path(size),method: :get, class: 'btn btn-danger' %>
+        <%= link_to 'この商品を予約する', reserves_path(@sizes),method: :get, class: 'btn btn-danger', :style=> "text-decoration: none; color: white;"  %>
     <% else %>
-        <%= link_to '会員登録して商品を予約する', new_user_registration_path, class: 'btn btn-danger' %>
+        <%= link_to '会員登録して予約する', new_user_registration_path, class: 'btn btn-warning', :style=> "text-decoration: none; color: white;" %>
     <% end %>
       </div>
     </div>
-  <% else %>
   <% end %>
   <% end %>
 
+  <!-- ダンロップ -->
+  <% @sizes.each do |size| %>
+  <% if size.manufacture.tire_maker_id == '2' %>
+    <div class="row">
+      <div class="col-md-5">
+        <%= attachment_image_tag size.manufacture, :image, :size => "350x250" %>
+      </div>
+      <div class="col-md-7">
+        <h4>DUNLOP</h4>
+        <%= size.manufacture.name %>
+        <%= size.name %>
+        <%= size.price %><br>
+    <% if user_signed_in? %>
+        <%= link_to 'この商品を予約する', reserves_path(@sizes),method: :get, class: 'btn btn-danger', :style=> "text-decoration: none; color: white;"  %>
+    <% else %>
+        <%= link_to '会員登録して予約する', new_user_registration_path, class: 'btn btn-warning', :style=> "text-decoration: none; color: white;" %>
+    <% end %>
+      </div>
+    </div>
+  <% end %>
+  <% end %>
 
+  <!-- ヨコハマタイヤ -->
+  <% @sizes.each do |size| %>
+  <% if size.manufacture.tire_maker_id == '3' %>
+    <div class="row">
+      <div class="col-md-5">
+        <%= attachment_image_tag size.manufacture, :image, :size => "350x250" %>
+      </div>
+      <div class="col-md-7">
+        <h4>YOKOHAMA</h4>
+        <%= size.manufacture.name %>
+        <%= size.name %>
+        <%= size.price %><br>
+    <% if user_signed_in? %>
+        <%= link_to 'この商品を予約する', reserves_path(@sizes),method: :get, class: 'btn btn-danger', :style=> "text-decoration: none; color: white;"  %>
+    <% else %>
+        <%= link_to '会員登録して予約する', new_user_registration_path, class: 'btn btn-warning', :style=> "text-decoration: none; color: white;" %>
+    <% end %>
+      </div>
+    </div>
+  <% end %>
+  <% end %>
 
+  </div>
+  </main>
 
-</div>
+  <!-- footer -->
+  <%= render 'sizes/footer' %>
+
+</body>
+</html>
+
 

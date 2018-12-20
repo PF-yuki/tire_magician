@@ -1,42 +1,42 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<style></style>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-
   <!-- header -->
-  <header class="clearfix">
-  	<%= link_to root_path do %>
-      <%= image_tag "logo.png", class: "header-logo", :size => "250x90" %>
-  	<% end %>
-  	<nav>
-  	  <ul class="nav-list">
-  	    <% if user_signed_in? %>
-  	      <li class="nav-list-item"><%= link_to "マイページ", user_path(current_user.id), :style=>"text-decoration: none; color:#a9a9a9;" %></li>
-  	      <li class="nav-list-item"><%= link_to "ログアウト", destroy_user_session_path, method: :delete, :style=>"text-decoration: none; color:#a9a9a9;" %></li>
-  	    <% else %>
-          <li class="nav-list-item"><%= link_to "ログインはこちら", new_user_session_path, :style=>"text-decoration: none; color:#a9a9a9;" %></li>
-          <li class="nav-list-item"><%= link_to "新規会員登録", new_user_registration_path, :style=>"text-decoration: none; color:#a9a9a9;" %></li>
-        <% end %>
-      </ul>
-    </nav>
-  </header>
-  <!-- /header -->
-<main>
+  <%= render 'sizes/header' %>
 
-  <div class="main-content">
-    <%= image_tag "main.jpg", :style=> "background-size: cover;" %>
-  	<%= link_to '商品を選択する', sizes_select_path %>
-  </div>
+  <!-- メインコンテンツ-->
+  <main>
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-1"></div>
+        <div class="col-xs-10">
 
-</main>
+          <!-- 購入フロー -->
+          <div class="main-visual">
+          </div>
+
+          <!-- 商品選択ページへのリンク -->
+          <div class="main-content">
+            <div class="" style="background-image: url(/assets/tire.jpg); background-size: cover; background-position: top center; height:400px; width: 100%;">
+  	        <%= link_to '商品を選択する', sizes_select_path, :style => "color:white; font-size: 15px; position: absolute; bottom: 15px; right: 40px;" %>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-xs-1"></div>
+      </div>
+    </div>
+  </main>
+
+
   <!-- footer -->
-  <footer>
-<p class="copyright">Copyright ©Tire Mounting store, Ltd All Rights Reserved.<p>
-  </footer>
+  <%= render 'sizes/footer' %>
 
-  <!-- /footer -->
 </body>
 </html>
 
