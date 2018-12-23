@@ -3,11 +3,10 @@ class SizesController < ApplicationController
   end
 
   def show
-  	@size = Size.find(params[:id])
-  	@manufactures = Size.where(name: @size.name)
+  	@sizes = Size.where(name: params[:id]).order(price: :asc)
   end
 
   def select
-  	@sizes = Size.all.order(name: :asc)
+  	@sizes = Size.order(name: :asc).pluck(:name).uniq
   end
 end

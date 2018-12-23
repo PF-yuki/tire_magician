@@ -1,28 +1,47 @@
-<h1>ユーザー情報編集</h1>
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+</head>
+<body>
 
+  <!-- header -->
+  <%= render 'sizes/header' %>
 
-<%= form_for (@user) do |t| %>
-<p>氏名</p>
-  <div class="field">
-    <%= t.label :lastname, "性" %><br />
-    <%= t.text_field :lastname, autofocus: true, autocomplete: "lastname" %>
+  <main>
+  <div class="container">
+    <h1>ユーザー情報編集</h1>
+
+    <div class="row">
+      <div class="col-xs-2"></div>
+      <div class="col-xs-8">
+        <%= form_for (@user) do |t| %>
+          <div class="field">
+            <%= t.label :lastname, "性" %><br />
+            <%= t.text_field :lastname, autofocus: true, autocomplete: "lastname" %>
+          </div>
+          <div class="field">
+            <%= t.label :firstname, "名" %><br />
+            <%= t.text_field :firstname, autofocus: true, autocomplete: "firstname" %>
+          </div>
+          <div class="field">
+            <%= t.label :email, "Eメールアドレス" %><br />
+            <%= t.email_field :email, autofocus: true, autocomplete: "email" %>
+          </div>
+          <div class="field">
+            <%= t.label :telephone, "電話番号" %><br />
+            <%= t.text_field :telephone, autofocus: true, autocomplete: "telephone" %>
+          </div>
+        <%= t.submit "変更を保存" %>
+        <% end %>
+      </div>
+      <div class="col-xs-2"></div>
+    </div>
   </div>
+  </main>
 
-  <div class="field">
-    <%= t.label :firstname, "名" %><br />
-    <%= t.text_field :firstname, autofocus: true, autocomplete: "firstname" %>
-  </div>
+  <!-- footer -->
+  <%= render 'sizes/footer' %>
 
-  <div class="field">
-    <%= t.label :email, "Eメールアドレス" %><br />
-    <%= t.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-    <div class="field">
-    <%= t.label :telephone, "電話番号" %><br />
-    <%= t.text_field :telephone, autofocus: true, autocomplete: "telephone" %>
-  </div>
-
-
-<%= t.submit "変更を保存" %>
-<% end %>
+</body>
+</html>

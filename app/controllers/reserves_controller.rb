@@ -6,6 +6,7 @@ class ReservesController < ApplicationController
   end
 
   def index
+
   end
 
   def success

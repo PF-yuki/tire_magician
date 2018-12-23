@@ -1,32 +1,41 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<style></style>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-
   <!-- header -->
-  <header class="clearfix">
-  	<%= link_to root_path do %>
-      <%= image_tag "logo.png", class: "header-logo", :size => "250x90" %>
-  	<% end %>
-  	<nav>
-  	  <ul class="nav-list">
-  	    <% if user_signed_in? %>
-  	      <li class="nav-list-item"><%= link_to "マイページ", user_path(current_user.id), class: "link" %></li>
-  	      <li class="nav-list-item"><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
-  	    <% else %>
-          <li class="nav-list-item"><%= link_to "ログインはこちら", new_user_session_path %></li>
-          <li class="nav-list-item"><%= link_to "新規会員登録", new_user_registration_path %></li>
-        <% end %>
-      </ul>
-    </nav>
-  </header>
-  <!-- /header -->
+  <%= render 'sizes/header' %>
 
-  <div class="main-content">
-  	<%= link_to '商品を選択する', sizes_select_path %>
-  </div>
+  <!-- メインコンテンツ-->
+  <main>
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-1"></div>
+        <div class="col-xs-10">
+
+          <!-- 購入フロー -->
+          <div class="main-visual">
+          </div>
+
+          <!-- 商品選択ページへのリンク -->
+          <div class="main-content">
+            <div class="" style="background-image: url(/assets/tire.jpg); background-size: cover; background-position: top center; height:400px; width: 100%;">
+  	        <%= link_to '商品を選択する', sizes_select_path, :style => "color:white; font-size: 15px; position: absolute; bottom: 15px; right: 40px;" %>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-xs-1"></div>
+      </div>
+    </div>
+  </main>
+
+
+  <!-- footer -->
+  <%= render 'sizes/footer' %>
 
 </body>
 </html>
