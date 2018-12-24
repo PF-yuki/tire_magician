@@ -10,15 +10,33 @@
 
   <main>
   <div class="container">
-    <h1>マイページ</h1>
     <div class="row">
       <div class="col-xs-2"></div>
       <div class="col-xs-8">
-        <h4>名前:<%= current_user.lastname %> <%= current_user.firstname %></h4>
-        <h4>電話番号:<%= current_user.telephone %></h4>
-        <h4>Eメールアドレス:<%= current_user.email %></h4>
-        <h1><%= link_to "編集", edit_user_path(current_user.id), :style=> "text-decoration: none;" %></h1>
+        <table>
+          <thead>
+            <tr>
+              <h3>ユーザー情報</h3>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>名前</td>
+              <td><%= current_user.lastname %> <%= current_user.firstname %></td>
+            </tr>
+            <tr>
+              <td>電話番号</td>
+              <td><%= current_user.telephone %></td>
+            </tr>
+            <tr>
+              <td>Eメールアドレス</td>
+              <td><%= current_user.email %></td>
+            </tr>
+          </tbody>
+        </table>
+        <%= link_to "編集", edit_user_path(current_user.id), :style=> "text-decoration: none;" %>
       </div>
+      <div class="col-xs-2"></div>
     </div>
   </div>
   </main>
