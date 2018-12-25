@@ -34,10 +34,54 @@
             </tr>
           </tbody>
         </table>
-        <%= link_to "編集", edit_user_path(current_user.id), :style=> "text-decoration: none;" %>
+      <div style="text-align:center;padding: 40px 0;">
+        <%= link_to "編集", edit_user_path(current_user.id), class: 'btn btn-danger', :style=> "text-decoration: none; color: white;"  %>
+      </div>
       </div>
       <div class="col-xs-2"></div>
     </div>
+
+　　　　<h3>予約済み商品</h3>
+　　　　<% @reserves.each do |reserve| %>
+      <div class="row">
+        <div class="col-md-5">
+          <%= attachment_image_tag reserve.size.manufacture, :image, :size => "350x250" %>
+        </div>
+        <div class="col-md-7">
+          <% if reserve.size.manufacture.tire_maker_id == '1' %>
+            <h4>BRIDGESTONE</h4>
+          <% elsif reserve.size.manufacture.tire_maker_id == '2' %>
+            <h4>DUNLOP</h4>
+          <% elsif reserve.size.manufacture.tire_maker_id == '3' %>
+            <h4>YOKOHAMA</h4>
+          <% end %>
+          <p><%= reserve.size.manufacture.name %></p>
+          <p><%= reserve.size.name %></p>
+          <p><%= reserve.size.price %></p>
+        </div>
+      </div>
+
+         <table>
+          <tbody>
+            <tr>
+              <td>予約日</td>
+              <td><%= reserve.day %></td>
+            </tr>
+            <tr>
+              <td>予約時間</td>
+              <td><%= reserve.time %></td>
+            </tr>
+            <tr>
+              <td>メーカー</td>
+              <td><%= reserve.car_maker %></td>
+            </tr>
+            <tr>
+              <td>車種</td>
+              <td><%= reserve.car_model %></td>
+            </tr>
+          </tbody>
+        </table>
+      <% end %>
 
   </div>
   </main>

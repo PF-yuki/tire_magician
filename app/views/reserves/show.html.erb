@@ -10,45 +10,49 @@
   <main>
   	<div class="container">
   	  <div class="row">
-  		<div class="col-md-2"></div>
-          
-          <!-- 確認フォーム-->
-          <%= form_for @reserve, :url => reserves_success_path do |t| %>
-        <div class="col-md-4">
-            <%= @reserve.day %>
-
-            <%= @reserve.time %><br>
-            <%= @reserve.car_maker %>
-            <%= @reserve.car_model %>
-            <%= @reserve.size_id %>
-            <%= @reserve.user_id %>
-
+        <h3>予約商品</h3>
+        <div class="col-md-5">
+          <%= attachment_image_tag @size.manufacture, :image, :size => "350x250" %>
         </div>
-        <div class="col-md-4">
-            <%= current_user.lastname %><%= current_user.firstname %><br>
-
-            <%= current_user.telephone %><br>
-        </div>
-        <div class="col-md-2"></div>
-        </div>
-      <div style="text-align:center;padding: 40px 0;">
-      	<%= t.submit '予約する' %>
-<%= @size.name %>
-<%= @size.manufacture.name %>
-<%= @size.price %>
-
+        <div class="col-md-7">
+          <% if @size.manufacture.tire_maker_id == '1' %>
+            <h4>BRIDGESTONE</h4>
+          <% elsif @size.manufacture.tire_maker_id == '2' %>
+            <h4>DUNLOP</h4>
+          <% elsif @size.manufacture.tire_maker_id == '3' %>
+            <h4>YOKOHAMA</h4>
           <% end %>
-
-
-
-	
-	
-
-
-
+          <p><%= @size.manufacture.name %></p>
+          <p><%= @size.name %></p>
+          <p><%= @size.price %></p>
         </div>
       </div>
 
+        <h3>予約内容</h3>
+         <table>
+          <tbody>
+            <tr>
+              <td>予約日</td>
+              <td><%= @reserve.day %></td>
+            </tr>
+            <tr>
+              <td>予約時間</td>
+              <td><%= @reserve.time %></td>
+            </tr>
+            <tr>
+              <td>メーカー</td>
+              <td><%= @reserve.car_maker %></td>
+            </tr>
+            <tr>
+              <td>車種</td>
+              <td><%= @reserve.car_model %></td>
+            </tr>
+          </tbody>
+        </table>
+
+      <div style="text-align:center;padding: 40px 0;">
+        <%= link_to 'トップへ戻る', root_path, class: 'btn btn-danger', :style=> "text-decoration: none; color: white;"  %>
+      </div>
     </div>
   </main>
 
