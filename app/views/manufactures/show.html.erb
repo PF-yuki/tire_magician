@@ -24,7 +24,7 @@
         <%= size.name %>
         <%= size.price %><br>
     <% if user_signed_in? %>
-        <%= link_to 'この商品を予約する', reserf_path(size), class: 'btn btn-danger', :style=> "text-decoration: none; color: white;"  %>
+        <%= link_to 'この商品を予約する', size_path(size), class: 'btn btn-danger', :style=> "text-decoration: none; color: white;"  %>
     <% else %>
         <%= link_to '会員登録して予約する', new_user_registration_path, class: 'btn btn-warning', :style=> "text-decoration: none; color: white;" %>
     <% end %>
@@ -46,7 +46,7 @@
         <%= size.name %>
         <%= size.price %><br>
     <% if user_signed_in? %>
-        <%= link_to 'この商品を予約する', reserf_path(size),method: :get, class: 'btn btn-danger', :style=> "text-decoration: none; color: white;"  %>
+        <%= link_to 'この商品を予約する', size_path(size),method: :get, class: 'btn btn-danger', :style=> "text-decoration: none; color: white;"  %>
     <% else %>
         <%= link_to '会員登録して予約する', new_user_registration_path, class: 'btn btn-warning', :style=> "text-decoration: none; color: white;" %>
     <% end %>
@@ -68,7 +68,7 @@
         <%= size.name %>
         <%= size.price %><br>
     <% if user_signed_in? %>
-        <%= link_to 'この商品を予約する', reserf_path(size),method: :get, class: 'btn btn-danger', :style=> "text-decoration: none; color: white;"  %>
+        <%= link_to 'この商品を予約する', size_path(size),method: :get, class: 'btn btn-danger', :style=> "text-decoration: none; color: white;"  %>
     <% else %>
         <%= link_to '会員登録して予約する', new_user_registration_path, class: 'btn btn-warning', :style=> "text-decoration: none; color: white;" %>
     <% end %>
@@ -85,5 +85,6 @@
 
 </body>
 </html>
+
 
 
