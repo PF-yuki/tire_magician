@@ -6,6 +6,8 @@ class UsersController < ApplicationController
   end
 
   def show
+    @user = User.find(params[:id])
+    @reserves = Reserve.where(user_id: @user.id)
   end
 
   def edit

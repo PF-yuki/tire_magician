@@ -10,63 +10,27 @@
   <main>
     <div class="container">
       <div class="row">
-      <div class="col-md-2"></div>
-
-          <!-- 日にち入力フォーム-->
-          <%= form_for @reserve do |t| %>
-
         <div class="col-md-4">
-            <%= t.label :day,"取付予約日"%>
-            <%= t.text_field :day, {:class => 'form-control datepicker', :required => true, autocomplete:"off" } %>
-            <%= t.label :day,"来店時間"%><br>
-            <%= t.time_select :time, {start_hour: 10,end_hour: 18, :minute_step => 30,:include_blank => true} %><br>
+          <%= attachment_image_tag @size.manufacture, :image, :size => "350x250" %>
         </div>
-        <div class="col-md-4">
-            <%= t.label :car_maker,"車のメーカー"%><br>
-            <%= t.select :car_maker, [["トヨタ", "トヨタ"],["ホンダ","ホンダ"],["ニッサン","ニッサン"],["マツダ","マツダ"],["スバル","スバル"],["スズキ","スズキ"],["ミツビシ","ミツビシ"],["ダイハツ","ダイハツ"],["輸入車","輸入車"]], :prompt => "選択してください" %><br>
-            <%= t.label :car_model,"車種"%><br>
-            <%= t.text_field :car_model,:required => true, autocomplete:"off" %>
-        </div>
-        <div class="col-md-2"></div>
-        </div>
-      <div style="text-align:center;padding: 40px 0;">
-        <%= t.submit '確認' %>
-<%= @size.name %>
-<%= @size.manufacture.name %>
-<%= @size.price %>
-      </div>
+        <div class="col-md-8">
+          <% if @size.manufacture.tire_maker_id == '1' %>
+            <h4>BRIDGESTONE</h4>
+          <% elsif @size.manufacture.tire_maker_id == '2' %>
+            <h4>DUNLOP</h4>
+          <% elsif @size.manufacture.tire_maker_id == '3' %>
+            <h4>YOKOHAMA</h4>
           <% end %>
-
-      <!-- 予約表示フォーム -->
-     <div class="container">
-        <div class="row">
-          <table class="table-bordered">
-            <thead>
-              <tr>
-                <th>header1</th>
-                <th>header2</th>
-                <th>header3</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>data1</td>
-                <td>data2</td>
-                <td>data3</td>
-              </tr>
-              <%= @reserves.each do |reserve| %>
-              <tr>
-                <td>data1</td>
-                <td><%= reserve.day %></td>
-                <td><%= reserve.time %></td>
-              </tr>
-              <% end %>
-            </tbody>
-          </table>
-
+          <p><%= @size.manufacture.name %></p>
+          <p><%= @size.name %></p>
+          <p><%= @size.price %></p>
+          <% if user_signed_in? %>
+              <%= link_to 'この商品を予約する', size_reserves_new_path(@size.id), class: 'btn btn-danger', :style=> "text-decoration: none; color: white;"  %>
+          <% else %>
+              <%= link_to '会員登録して予約する', new_user_registration_path, class: 'btn btn-warning', :style=> "text-decoration: none; color: white;" %>
+          <% end %>
         </div>
       </div>
-
     </div>
   </main>
 

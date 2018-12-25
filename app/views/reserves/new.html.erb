@@ -1,1 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset='utf-8'>
+</head>
+<body>
+  <!-- header -->
+  <%= render 'sizes/header' %>
 
+  <main>
+    <div class="container">
+      <div class="row">
+          <!-- エラーメッセージ -->
+          <% if @reserve.errors.any? %>
+            <div id="error_explanation" class="alert alert-danger">
+              <ul>
+                <% @reserve.errors.full_messages.each do |message| %>
+                  <li><%= message %></li>
+                <% end %>
+              </ul>
+            </div>
+          <% end %>
+
+          <!-- 日にち入力フォーム-->
+          <%= form_for ([@size,@reserve]) do |t| %>
+        <div class="col-md-6">
+            <%= t.label :day,"取付予約日"%>
+            <%= t.text_field :day, {:class => 'form-control datepicker', :required => true, autocomplete:"off" } %>
+            <%= t.label :day,"来店時間"%><br>
+            <%= t.time_select :time, {start_hour: 10,end_hour: 18, :minute_step => 30,:include_blank => true} %><br>
+        </div>
+        <div class="col-md-6">
+            <%= t.label :car_maker,"車のメーカー"%><br>
+            <%= t.select :car_maker, [["トヨタ", "トヨタ"],["ホンダ","ホンダ"],["ニッサン","ニッサン"],["マツダ","マツダ"],["スバル","スバル"],["スズキ","スズキ"],["ミツビシ","ミツビシ"],["ダイハツ","ダイハツ"],["輸入車","輸入車"]], :prompt => "選択してください" %><br>
+            <%= t.label :car_model,"車種"%><br>
+            <%= t.text_field :car_model,:required => true, autocomplete:"off" %>
+        </div>
+    </div>
+      <div style="text-align:center;padding: 40px 0;">
+        <%= t.submit '予約する', :style => "width: 200px; height: 50px; font-size:18px;" %>
+      </div>
+          <% end %>
+
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- footer -->
+  <%= render 'sizes/footer' %>
+
+</body>
+</html>

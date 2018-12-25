@@ -1,45 +1,36 @@
 class ReservesController < ApplicationController
   def new
+    @size = Size.find(params[:size_id])
+    @reserve = Reserve.new
+    @reserves = Reserve.all
+
   end
 
   def index
-
-#    @reserve = Reserve.new
-#    @reserves = Reserve.all
-#    @size = Size.find_by(params[:id])
-
   end
 
   def success
-
   end
 
   def show
-#size#show    @reserve = Reserve.new
-#             @reserves = Reserve.all
-#             @size = Size.find(params[:id])
-#    @reserve = Reserve.new(reserve_params)
-#    @size = Size.find(params[:id])
    @reserve = Reserve.find(params[:id])
-
-  end
-
-  def confirm_c
-#    @reserve = Reserve.new(reserve_params)
-#    @size = Size.find(params[:id])
-#    redirect_to reserves_confirm_path
+   @size = @reserve.size
   end
 
   def confirm
-#    @size = Size.find(params[:id])
-#    @reserve = Reserve.new(reserve_params)
   end
 
   def create
+    @size = Size.find(params[:size_id])
     @reserve = Reserve.new(reserve_params)
-    @reserve.save
-    binding.pry
-    redirect_to reserf_path(params[:id])
+    @reserve.size_id = @size.id
+    @reserve.user_id = current_user.id
+    if @reserve.save
+      redirect_to reserf_path(@reserve.id)
+    else
+      @reserves = Reserve.all
+      render :new
+    end
   end
 
   def destroy
@@ -48,7 +39,7 @@ class ReservesController < ApplicationController
   private
 
   def reserve_params
-    params.require(:reserve).permit(:day, :time, :car_maker, :car_model).merge(user_id: current_user.id)
+    params.require(:reserve).permit(:day, :time, :car_maker, :car_model, :size_id).merge(user_id: current_user.id)
  end
 
 
