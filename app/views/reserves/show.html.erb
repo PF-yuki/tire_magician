@@ -1,2 +1,59 @@
-<h1>Reserves#show</h1>
-<p>Find me in app/views/reserves/show.html.erb</p>
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset='utf-8'>
+</head>
+<body>
+  <!-- header -->
+  <%= render 'sizes/header' %>
+
+  <main>
+  	<div class="container">
+  	  <div class="row">
+  		<div class="col-md-2"></div>
+          
+          <!-- 確認フォーム-->
+          <%= form_for @reserve, :url => reserves_success_path do |t| %>
+        <div class="col-md-4">
+            <%= @reserve.day %>
+
+            <%= @reserve.time %><br>
+            <%= @reserve.car_maker %>
+            <%= @reserve.car_model %>
+            <%= @reserve.size_id %>
+            <%= @reserve.user_id %>
+
+        </div>
+        <div class="col-md-4">
+            <%= current_user.lastname %><%= current_user.firstname %><br>
+
+            <%= current_user.telephone %><br>
+        </div>
+        <div class="col-md-2"></div>
+        </div>
+      <div style="text-align:center;padding: 40px 0;">
+      	<%= t.submit '予約する' %>
+<%= @size.name %>
+<%= @size.manufacture.name %>
+<%= @size.price %>
+
+          <% end %>
+
+
+
+	
+	
+
+
+
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- footer -->
+  <%= render 'sizes/footer' %>
+
+</body>
+</html>

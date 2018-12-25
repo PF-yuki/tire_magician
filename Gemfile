@@ -69,4 +69,6 @@ gem "gretel"
 gem 'bootstrap-sass'
 gem 'jquery-rails'
 gem 'pry-rails'
+gem 'bootstrap-datetimepicker-rails'
+gem 'momentjs-rails'
 

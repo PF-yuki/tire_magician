@@ -1,43 +1,93 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="UTF-8">
-  <link rel="stylesheet" href="style.css">
+  <title></title>
 </head>
-
 <body>
   <!-- header -->
   <%= render 'sizes/header' %>
 
-  <!-- メインコンテンツ-->
   <main>
     <div class="container">
       <div class="row">
-        <div class="col-xs-1"></div>
-        <div class="col-xs-10">
-
-          <!-- 購入フロー -->
-          <div class="main-visual">
+        <div class="select">
+        <h4>商品を選択</h4>
+          <div class="col-md-6">
+            <div class="dropdown">
+              <button class="btn btn-info dropdown-toggle" type="button" data-toggle="dropdown">サイズを選択してください
+                <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu">
+                <% @sizes.each do |size| %>
+                      <li><%= link_to size, manufacture_path(size) %></li>
+                <% end %>
+              </ul>
+            </div>
+            <a class="btn btn-default" data-toggle="collapse" href="#collapseExample">車種から探す</a>
           </div>
 
-          <!-- 商品選択ページへのリンク -->
-          <div class="main-content">
-            <div class="" style="background-image: url(/assets/tire.jpg); background-size: cover; background-position: top center; height:400px; width: 100%;">
-  	        <%= link_to '商品を選択する', sizes_select_path, :style => "color:white; font-size: 15px; position: absolute; bottom: 15px; right: 40px;" %>
+
+          <!-- モーダルボタン -->
+          <div class="col-md-6">
+            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#sampleModal">タイヤサイズの確認方法</button>
+          </div>
+          <!-- モーダル -->
+          <div class="modal fade" id="sampleModal" tabindex="-1">
+            <div class="modal-dialog" style="height: 500px; width: 800px;">
+              <div class="modal-content">
+                <div class="modal-header">現在のお車のタイヤの側面をご確認ください
+                  <button type="button" class="close" data-dismiss="modal"><span>×</span></button>
+                </div>
+                <div class="modal-body"><div class="" style="background-image: url(/assets/tire_size.jpeg); background-size: cover;background-position: top center; height:400px; width: 700px;"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      
+        <div class="collapse" id="collapseExample">
+          <div class="well">
+            <!-- 車種から探す -->
+            <ul class="nav nav-tabs">
+              <li class="active"><a href="#sampleContentA" data-toggle="tab">トヨタ</a></li>
+              <li><a href="#sampleContentB" data-toggle="tab">ホンダ</a></li>
+              <li><a href="#sampleContentC" data-toggle="tab">ニッサン</a></li>
+              <li><a href="#sampleContentD" data-toggle="tab">マツダ</a></li>
+              <li><a href="#sampleContentB" data-toggle="tab">スバル</a></li>
+              <li><a href="#sampleContentB" data-toggle="tab">スズキ</a></li>
+              <li><a href="#sampleContentB" data-toggle="tab">ミツビシ</a></li>
+              <li><a href="#sampleContentB" data-toggle="tab">ダイハツ</a></li>
+            </ul>
+            <!-- タブ内容 -->
+            <div class="tab-content">
+              <div class="tab-pane active" id="sampleContentA">
+                <p>タブＡの内容</p>
+                <p>タブＡの内容</p>
+                <p>タブＡの内容</p>
+                <p>タブＡの内容</p>
+                <p>タブＡの内容</p>
+              </div>
+              <div class="tab-pane" id="sampleContentB">
+                <p>タブＢの内容</p>
+              </div>
+              <div class="tab-pane" id="sampleContentC">
+                <p>タブＣの内容</p>
+              </div>
+              <div class="tab-pane" id="sampleContentD">
+                <p>タブＤの内容</p>
+              </div>
             </div>
           </div>
         </div>
 
-        <div class="col-xs-1"></div>
-      </div>
+
     </div>
   </main>
-
 
   <!-- footer -->
   <%= render 'sizes/footer' %>
 
 </body>
 </html>
-
-

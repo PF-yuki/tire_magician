@@ -1,6 +1,6 @@
 class Size < ApplicationRecord
   belongs_to :manufacture
-  has_one :reserve, dependent: :destroy
+  has_many :reserve, dependent: :destroy
   enum name: {
 		"155/65Ｒ13":1,
 		"155/65Ｒ14":2,

@@ -60,3 +60,6 @@ footer {
   color: #fff;
   text-align: center;
 }
+#date-form {
+  position: relative;
+}
