@@ -28,7 +28,7 @@
         <div class="col-md-6">
             <%= t.label :day,"取付予約日"%>
             <p><%= @reserve_list %>〜<%= @reserve_list +6 %>を選んでください</p>
-            <%= t.text_field :day, {:class => 'form-control datepicker', :required => true, autocomplete:"off", placeholder: "日にちを選択してください" } %>
+            <%= t.date_field :day, :class => 'form-control datepicker', :required => true, autocomplete:"off", placeholder: "日にちを選択してください"  %>
             <%= t.label :time,"来店時間"%><br>
             <%= t.time_select :time, {start_hour: 10,end_hour: 18, :minute_step => 30} %><br>
         </div>
