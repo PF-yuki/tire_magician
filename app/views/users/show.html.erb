@@ -22,15 +22,15 @@
           <tbody>
             <tr>
               <td>名前</td>
-              <td><%= current_user.lastname %> <%= current_user.firstname %></td>
+              <td><%= @user.lastname %> <%= current_user.firstname %></td>
             </tr>
             <tr>
               <td>電話番号</td>
-              <td><%= current_user.telephone %></td>
+              <td><%= @user.telephone %></td>
             </tr>
             <tr>
               <td>Eメールアドレス</td>
-              <td><%= current_user.email %></td>
+              <td><%= @user.email %></td>
             </tr>
           </tbody>
         </table>
@@ -55,9 +55,9 @@
           <% elsif reserve.size.manufacture.tire_maker_id == '3' %>
             <h4>YOKOHAMA</h4>
           <% end %>
-          <p><%= reserve.size.manufacture.name %></p>
-          <p><%= reserve.size.name %></p>
-          <p><%= reserve.size.price %></p>
+          <p>商品名：<%= reserve.size.manufacture.name %></p>
+          <p>サイズ：<%= reserve.size.name %></p>
+          <p>価格（4本）：<%= reserve.size.price %>円</p>
         </div>
       </div>
 
@@ -65,11 +65,11 @@
           <tbody>
             <tr>
               <td>予約日</td>
-              <td><%= reserve.day %></td>
+              <td><%= reserve.day.strftime("%Y年%m月%d日") %></td>
             </tr>
             <tr>
               <td>予約時間</td>
-              <td><%= reserve.time %></td>
+              <td><%= reserve.time.strftime("%H:%M") %></td>
             </tr>
             <tr>
               <td>メーカー</td>

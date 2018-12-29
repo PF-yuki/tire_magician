@@ -1,9 +1,9 @@
 class ReservesController < ApplicationController
+  before_action :authenticate_user!
   def new
     @size = Size.find(params[:size_id])
     @reserve = Reserve.new
-    @reserves = Reserve.all
-
+    @reserve_list = Date.today + 7
   end
 
   def index
@@ -14,7 +14,12 @@ class ReservesController < ApplicationController
 
   def show
    @reserve = Reserve.find(params[:id])
-   @size = @reserve.size
+
+   if current_user.id == @reserve.user_id
+     @size = @reserve.size
+   else
+     redirect_to root_path
+  end
   end
 
   def confirm
@@ -28,7 +33,8 @@ class ReservesController < ApplicationController
     if @reserve.save
       redirect_to reserf_path(@reserve.id)
     else
-      @reserves = Reserve.all
+      @reserve_list = Date.today + 7
+      @reserves = Reserve.where(day: Date.today + 7..Date.today + 13)
       render :new
     end
   end
@@ -41,6 +47,7 @@ class ReservesController < ApplicationController
   def reserve_params
     params.require(:reserve).permit(:day, :time, :car_maker, :car_model, :size_id).merge(user_id: current_user.id)
  end
+
 
 
 end

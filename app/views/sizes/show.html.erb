@@ -21,13 +21,13 @@
           <% elsif @size.manufacture.tire_maker_id == '3' %>
             <h4>YOKOHAMA</h4>
           <% end %>
-          <p><%= @size.manufacture.name %></p>
-          <p><%= @size.name %></p>
-          <p><%= @size.price %></p>
+          <p>商品名：<%= @size.manufacture.name %></p>
+          <p>サイズ：<%= @size.name %></p>
+          <p>価格（4本）：<%= @size.price %>円</p>
           <% if user_signed_in? %>
               <%= link_to 'この商品を予約する', size_reserves_new_path(@size.id), class: 'btn btn-danger', :style=> "text-decoration: none; color: white;"  %>
           <% else %>
-              <%= link_to '会員登録して予約する', new_user_registration_path, class: 'btn btn-warning', :style=> "text-decoration: none; color: white;" %>
+              <%= link_to '会員登録して予約する', size_reserves_new_path(@size.id), class: 'btn btn-warning', :style=> "text-decoration: none; color: white;" %>
           <% end %>
         </div>
       </div>

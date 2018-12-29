@@ -14,13 +14,13 @@
     <div id="sampleCarousel" class="carousel slide" data-ride="carousel">
       <div class="carousel-inner" role="listbox">
         <div class="item active">
-          <img src="../assets/main.jpg" style="width: 100%; height: 500px; background-size: cover; background-position: center;" alt="First slide">
+          <img src="../assets/car1.jpeg" style="width: 100%; height: 500px; background-size: cover; background-position: center;" alt="First slide">
         </div>
         <div class="item">
-          <img src="../assets/main.jpg" style="width: 100%; height: 500px; background-size: cover; background-position: center;" alt="Second slide">
+          <img src="../assets/car2.jpg" style="width: 100%; height: 500px; background-size: cover; background-position: center;" alt="Second slide">
         </div>
         <div class="item">
-          <img src="../assets/main.jpg" style="width: 100%; height: 500px; background-size: cover; background-position: center;" alt="Third slide">
+          <img src="../assets/car3.jpg" style="width: 100%; height: 500px; background-size: cover; background-position: center;" alt="Third slide">
         </div>
       </div>
       <a class="left carousel-control" href="#sampleCarousel" role="button" data-slide="prev">
@@ -41,12 +41,32 @@
 
           <!-- 購入フロー -->
           <div class="main-visual">
+            <table class="shopping-table">
+              <thead>
+                <tr class="shopoing-guide">
+                  <th class="shopping-title">1：サイズを選択</th>
+                  <th class="shopping-title">></th>
+                  <th class="shopping-title">2：商品を選択</th>
+                  <th class="shopping-title">></th>
+                  <th class="shopping-title">3：取付日を予約</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="shopping-menu"><img class="shopping-icon" src="/assets/icon1.png"></td>
+                  <td></td>
+                  <td class="shopping-menu"><img class="shopping-icon" src="/assets/icon2.png"></td>
+                  <td></td>
+                  <td class="shopping-menu"><img class="shopping-icon" src="/assets/icon3.png"></td>
+                </tr>
+              </tbody>
+            </table>
           </div>
 
           <!-- 商品選択ページへのリンク -->
           <div class="main-content">
             <div class="" style="background-image: url(/assets/tire.jpg); background-size: cover; background-position: top center; height:400px; width: 100%;">
-  	        <%= link_to '商品を選択する', sizes_path, :style => "color:white; font-size: 15px; position: absolute; bottom: 15px; right: 40px;" %>
+  	        <%= link_to '商品を選択する', sizes_path, :style => "color:white; font-size: 30px; position: absolute; bottom: 15px; right: 40px;" %>
             </div>
           </div>
 

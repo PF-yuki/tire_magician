@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :authenticate_user!
   def new
   end
 
@@ -7,11 +8,19 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @reserves = Reserve.where(user_id: @user.id)
+    if current_user.id == @user.id
+      @reserves = Reserve.where(user_id: @user.id).where(day: Date.today..Date.today + 13)
+    else
+      redirect_to root_path
+    end
   end
 
   def edit
     @user = User.find(params[:id])
+  if current_user.id == @user.id
+  else
+    redirect_to root_path
+  end
   end
 
   def update

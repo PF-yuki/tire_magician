@@ -1,4 +1,14 @@
  <!-- footer -->
   <footer>
+  	<ul class="footer-list">
+  	    <li class="footer-list-item"><%= link_to"HOME", root_path, :style=> "text-decoration: none; color:#a9a9a9;" %></li>
+  	    <li class="footer-list-item"><%= link_to '商品選択', sizes_path, :style=> "text-decoration: none; color:#a9a9a9;" %></li>
+  	  <% if user_signed_in? %>
+        <li class="footer-list-item"><%= link_to "マイページ", user_path(current_user.id), :style=> "text-decoration: none; color:#a9a9a9;" %></li>
+      <% else %>
+        <li class="footer-list-item"><%= link_to "ログイン", new_user_session_path, :style => "text-decoration: none; color:#a9a9a9;" %></li>
+        <li class="footer-list-item"><%= link_to "新規会員登録", new_user_registration_path, :style => "text-decoration: none; color:#a9a9a9;" %></li>
+      <% end %>
+    </ul>
     <p class="copyright">Copyright ©Tire Mounting store, Ltd All Rights Reserved.<p>
   </footer>
