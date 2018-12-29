@@ -7,6 +7,8 @@
   <!-- header -->
   <%= render 'sizes/header' %>
 
+
+
   <main>
     <div class="container">
       <div class="row">
@@ -25,24 +27,242 @@
           <%= form_for ([@size,@reserve]) do |t| %>
         <div class="col-md-6">
             <%= t.label :day,"取付予約日"%>
-            <%= t.text_field :day, {:class => 'form-control datepicker', :required => true, autocomplete:"off" } %>
-            <%= t.label :day,"来店時間"%><br>
-            <%= t.time_select :time, {start_hour: 10,end_hour: 18, :minute_step => 30,:include_blank => true} %><br>
+            <p><%= @reserve_list %>〜<%= @reserve_list +6 %>を選んでください</p>
+            <%= t.text_field :day, {:class => 'form-control datepicker', :required => true, autocomplete:"off", placeholder: "日にちを選択してください" } %>
+            <%= t.label :time,"来店時間"%><br>
+            <%= t.time_select :time, {start_hour: 10,end_hour: 18, :minute_step => 30} %><br>
         </div>
         <div class="col-md-6">
             <%= t.label :car_maker,"車のメーカー"%><br>
             <%= t.select :car_maker, [["トヨタ", "トヨタ"],["ホンダ","ホンダ"],["ニッサン","ニッサン"],["マツダ","マツダ"],["スバル","スバル"],["スズキ","スズキ"],["ミツビシ","ミツビシ"],["ダイハツ","ダイハツ"],["輸入車","輸入車"]], :prompt => "選択してください" %><br>
             <%= t.label :car_model,"車種"%><br>
-            <%= t.text_field :car_model,:required => true, autocomplete:"off" %>
+            <%= t.text_field :car_model,:required => true, autocomplete:"off", placeholder: "車種を入力してください　例:アクア" %>
         </div>
-    </div>
+      </div>
       <div style="text-align:center;padding: 40px 0;">
-        <%= t.submit '予約する', :style => "width: 200px; height: 50px; font-size:18px;" %>
+        <%= t.submit '取付日予約', :style => "width: 200px; height: 50px; font-size:18px;" %>
       </div>
           <% end %>
 
-        </div>
-      </div>
+      <!-- 予約表示フォーム -->
+        <h3 class="reserve_day">現在の予約可能リスト</h3>
+        <table class="table reserve_table">
+          <tbody>
+            <!-- 日にち-->
+            <thead>
+              <th></th>
+              <% for i in 0..6 do %>
+                <th class="reserve_day"><%= @reserve_list + i %></th>
+              <% end %>
+            </thead>
+            <!--/ 日にち-->
+
+            <!-- 時間 -->
+            <tr>
+              <td>10:00</td>
+              <% for i in 0..6 do %>
+                <% if Reserve.find_by(day: @reserve_list + i, time: "2000-01-01 10:00:00") %>
+                  <td>×</td>
+                <% else %>
+                  <td>◯</td>
+                <% end %>
+              <% end %>
+            </tr>
+
+            <tr>
+              <td>10:30</td>
+              <% for i in 0..6 do %>
+                <% if Reserve.find_by(day: @reserve_list + i, time: "2000-01-01 10:30:00") %>
+                  <td>×</td>
+                <% else %>
+                  <td>◯</td>
+                <% end %>
+              <% end %>
+            </tr>
+            </tr>
+
+            <tr>
+              <td>11:00</td>
+              <% for i in 0..6 do %>
+                <% if Reserve.find_by(day: @reserve_list + i, time: "2000-01-01 11:00:00") %>
+                  <td>×</td>
+                <% else %>
+                  <td>◯</td>
+                <% end %>
+              <% end %>
+            </tr>
+            </tr>
+
+            <tr>
+              <td>11:30</td>
+              <% for i in 0..6 do %>
+                <% if Reserve.find_by(day: @reserve_list + i, time: "2000-01-01 11:30:00") %>
+                  <td>×</td>
+                <% else %>
+                  <td>◯</td>
+                <% end %>
+              <% end %>
+            </tr>
+
+            <tr>
+              <td>12:00</td>
+              <% for i in 0..6 do %>
+                <% if Reserve.find_by(day: @reserve_list + i, time: "2000-01-01 12:00:00") %>
+                  <td>×</td>
+                <% else %>
+                  <td>◯</td>
+                <% end %>
+              <% end %>
+            </tr>
+
+            <tr>
+              <td>12:30</td>
+              <% for i in 0..6 do %>
+                <% if Reserve.find_by(day: @reserve_list + i, time: "2000-01-01 12:30:00") %>
+                  <td>×</td>
+                <% else %>
+                  <td>◯</td>
+                <% end %>
+              <% end %>
+            </tr>
+
+            <tr>
+              <td>13:00</td>
+              <% for i in 0..6 do %>
+                <% if Reserve.find_by(day: @reserve_list + i, time: "2000-01-01 13:00:00") %>
+                  <td>×</td>
+                <% else %>
+                  <td>◯</td>
+                <% end %>
+              <% end %>
+            </tr>
+
+            <tr>
+              <td>13:30</td>
+             <% for i in 0..6 do %>
+                <% if Reserve.find_by(day: @reserve_list + i, time: "2000-01-01 13:30:00") %>
+                  <td>×</td>
+                <% else %>
+                  <td>◯</td>
+                <% end %>
+              <% end %>
+            </tr>
+
+            <tr>
+              <td>14:00</td>
+              <% for i in 0..6 do %>
+                <% if Reserve.find_by(day: @reserve_list + i, time: "2000-01-01 14:00:00") %>
+                  <td>×</td>
+                <% else %>
+                  <td>◯</td>
+                <% end %>
+              <% end %>
+            </tr>
+
+            <tr>
+              <td>14:30</td>
+                <% for i in 0..6 do %>
+                <% if Reserve.find_by(day: @reserve_list + i, time: "2000-01-01 14:30:00") %>
+                  <td>×</td>
+                <% else %>
+                  <td>◯</td>
+                <% end %>
+              <% end %>
+            </tr>
+
+            <tr>
+              <td>15:00</td>
+                <% for i in 0..6 do %>
+                <% if Reserve.find_by(day: @reserve_list + i, time: "2000-01-01 15:00:00") %>
+                  <td>×</td>
+                <% else %>
+                  <td>◯</td>
+                <% end %>
+              <% end %>
+
+            </tr>
+
+            <tr>
+              <td>15:30</td>
+              <% for i in 0..6 do %>
+                <% if Reserve.find_by(day: @reserve_list + i, time: "2000-01-01 15:30:00") %>
+                  <td>×</td>
+                <% else %>
+                  <td>◯</td>
+                <% end %>
+              <% end %>
+            </tr>
+
+            <tr>
+              <td>16:00</td>
+              <% for i in 0..6 do %>
+                <% if Reserve.find_by(day: @reserve_list + i, time: "2000-01-01 16:00:00") %>
+                  <td>×</td>
+                <% else %>
+                  <td>◯</td>
+                <% end %>
+              <% end %>
+            </tr>
+
+            <tr>
+              <td>16:30</td>
+              <% for i in 0..6 do %>
+                <% if Reserve.find_by(day: @reserve_list + i, time: "2000-01-01 16:30:00") %>
+                  <td>×</td>
+                <% else %>
+                  <td>◯</td>
+                <% end %>
+              <% end %>
+            </tr>
+
+            <tr>
+              <td>17:00</td>
+                <% for i in 0..6 do %>
+                <% if Reserve.find_by(day: @reserve_list + i, time: "2000-01-01 17:00:00") %>
+                  <td>×</td>
+                <% else %>
+                  <td>◯</td>
+                <% end %>
+              <% end %>
+            </tr>
+
+            <tr>
+              <td>17:30</td>
+              <% for i in 0..6 do %>
+                <% if Reserve.find_by(day: @reserve_list + i, time: "2000-01-01 17:30:00") %>
+                  <td>×</td>
+                <% else %>
+                  <td>◯</td>
+                <% end %>
+              <% end %>
+            </tr>
+
+            <tr>
+              <td>18:00</td>
+              <% for i in 0..6 do %>
+                <% if Reserve.find_by(day: @reserve_list + i, time: "2000-01-01 18:00:00") %>
+                  <td>×</td>
+                <% else %>
+                  <td>◯</td>
+                <% end %>
+              <% end %>
+            </tr>
+
+            <tr>
+              <td>18:30</td>
+              <% for i in 0..6 do %>
+                <% if Reserve.find_by(day: @reserve_list + i, time: "2000-01-01 18:30:00") %>
+                  <td>×</td>
+                <% else %>
+                  <td>◯</td>
+                <% end %>
+              <% end %>
+            </tr>
+
+            <!-- /時間 -->
+            </tbody>
+          </table>
+
 
     </div>
   </main>

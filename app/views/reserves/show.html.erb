@@ -22,9 +22,9 @@
           <% elsif @size.manufacture.tire_maker_id == '3' %>
             <h4>YOKOHAMA</h4>
           <% end %>
-          <p><%= @size.manufacture.name %></p>
-          <p><%= @size.name %></p>
-          <p><%= @size.price %></p>
+          <p>商品名：<%= @size.manufacture.name %></p>
+          <p>サイズ：<%= @size.name %></p>
+          <p>価格（4本）：<%= @size.price %>円</p>
         </div>
       </div>
 
@@ -33,11 +33,11 @@
           <tbody>
             <tr>
               <td>予約日</td>
-              <td><%= @reserve.day %></td>
+              <td><%= @reserve.day.strftime("%Y年%m月%d日") %></td>
             </tr>
             <tr>
               <td>予約時間</td>
-              <td><%= @reserve.time %></td>
+              <td><%= @reserve.time.strftime("%H:%M") %></td>
             </tr>
             <tr>
               <td>メーカー</td>

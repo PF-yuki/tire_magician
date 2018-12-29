@@ -19,9 +19,9 @@
           <td>
             <%= attachment_image_tag size.manufacture, :image, :size => "350x250" %>
             <h4>BRIDGESTONE</h4>
-            <p><%= size.manufacture.name %></p>
-            <p><%= size.price %></p>
-            <%= link_to 'この商品を詳しく見る', size_path(size), class: 'btn btn-danger', :style=> "text-decoration: none; color: white;"  %>
+            <p>商品名：<%= size.manufacture.name %></p>
+            <p>価格（4本）：<%= size.price %>円</p>
+            <%= link_to 'この商品を詳しく見る', size_path(size), class: 'btn btn-success', :style=> "text-decoration: none; color: white;"  %>
         </td>
         <% end %>
       <% end %>
@@ -39,9 +39,9 @@
           <td>
             <%= attachment_image_tag size.manufacture, :image, :size => "350x250" %>
             <h4>DUNLOP</h4>
-            <p><%= size.manufacture.name %></p>
-            <p><%= size.price %></p>
-            <%= link_to 'この商品を詳しく見る', size_path(size), class: 'btn btn-danger', :style=> "text-decoration: none; color: white;"  %>
+            <p>商品名：<%= size.manufacture.name %></p>
+            <p>価格（4本）：<%= size.price %>円</p>
+            <%= link_to 'この商品を詳しく見る', size_path(size), class: 'btn btn-success', :style=> "text-decoration: none; color: white;"  %>
         </td>
         <% end %>
       <% end %>
@@ -59,9 +59,9 @@
           <td>
             <%= attachment_image_tag size.manufacture, :image, :size => "350x250" %>
             <h4>YOKOHAMA</h4>
-            <p><%= size.manufacture.name %></p>
-            <p><%= size.price %></p>
-            <%= link_to 'この商品を詳しく見る', size_path(size), class: 'btn btn-danger', :style=> "text-decoration: none; color: white;"  %>
+            <p>商品名：<%= size.manufacture.name %></p>
+            <p>価格（4本）：<%= size.price %>円</p>
+            <%= link_to 'この商品を詳しく見る', size_path(size), class: 'btn btn-success', :style=> "text-decoration: none; color: white;"  %>
         </td>
         <% end %>
       <% end %>
