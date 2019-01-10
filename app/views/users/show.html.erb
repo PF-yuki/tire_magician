@@ -56,7 +56,7 @@
             <h4>YOKOHAMA</h4>
           <% end %>
           <p>商品名：<%= reserve.size.manufacture.name %></p>
-          <p>サイズ：<%= reserve.size.name %></p>
+          <p>サイズ：<%= reserve.size.name.sub(/_/, '/') %></p>
           <p>価格（4本）：<%= reserve.size.price %>円</p>
         </div>
       </div>
