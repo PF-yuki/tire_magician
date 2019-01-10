@@ -15,8 +15,9 @@
               <span class="caret"></span>
             </button>
             <ul class="dropdown-menu">
+
               <% @sizes.each do |size| %>
-                <li><%= link_to size, manufacture_path(size) %></li>
+                <li><%= link_to size.sub(/_/, '/'), manufacture_path(size) %></li>
               <% end %>
             </ul>
             <!-- <a class="btn btn-default" data-toggle="collapse" href="#collapseExample">車種から探す</a> -->

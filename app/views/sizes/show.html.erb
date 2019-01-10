@@ -22,7 +22,7 @@
             <h4>YOKOHAMA</h4>
           <% end %>
           <p>商品名：<%= @size.manufacture.name %></p>
-          <p>サイズ：<%= @size.name %></p>
+          <p>サイズ：<%= @size.name.sub(/_/, '/') %></p>
           <p>価格（4本）：<%= @size.price %>円</p>
           <% if user_signed_in? %>
               <%= link_to 'この商品を予約する', size_reserves_new_path(@size.id), class: 'btn btn-danger', :style=> "text-decoration: none; color: white;"  %>
